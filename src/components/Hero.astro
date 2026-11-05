@@ -1,5 +1,8 @@
 ---
 import { studio } from '../consts';
+import { hasPhoto, photoSrc } from '../lib/photos';
+
+const heroPhoto = 'hero.jpg';
 ---
 
 <section class="hero" id="inicio">
@@ -42,10 +45,20 @@ import { studio } from '../consts';
 
     <div class="hero__media">
       <div class="frame">
-        <!-- Troque .frame__ph por <img src="/images/retrato-hero.jpg" alt="Retrato corporativo por Andressa Medeiros" /> -->
-        <div class="frame__ph">
-          <span class="frame__ph-label">Retrato em destaque</span>
-        </div>
+        {hasPhoto(heroPhoto) ? (
+          <img
+            class="frame__img"
+            src={photoSrc(heroPhoto)}
+            alt="Andressa Medeiros, fotógrafa de retrato corporativo, com a câmera no estúdio"
+            width="860"
+            height="1075"
+            decoding="async"
+          />
+        ) : (
+          <div class="frame__ph">
+            <span class="frame__ph-label">Retrato em destaque</span>
+          </div>
+        )}
         <span class="frame__corner frame__corner--tl" aria-hidden="true"></span>
         <span class="frame__corner frame__corner--tr" aria-hidden="true"></span>
         <span class="frame__corner frame__corner--bl" aria-hidden="true"></span>
@@ -175,6 +188,15 @@ import { studio } from '../consts';
       #101010;
   }
 
+  .frame__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: 50% 22%;
+    border-radius: 8px;
+  }
+
   .frame__ph-label {
     color: var(--gold);
     font-size: 0.68rem;
@@ -239,7 +261,8 @@ import { studio } from '../consts';
       max-width: 100%;
     }
 
-    .frame__ph {
+    .frame__ph,
+    .frame__img {
       aspect-ratio: 4 / 3;
     }
 

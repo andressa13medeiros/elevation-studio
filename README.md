@@ -57,14 +57,10 @@ e, se quiser separar por botão, use a variável `cta_text`.
 
 ## Trocar as fotos
 
-1. Salve os arquivos em `public/images/` (nomes sugeridos em `public/images/README.txt`).
-2. Em `src/components/Gallery.astro`, substitua cada `<div class="shot__media">` por:
-
-   ```html
-   <img src="/images/headshot-01.jpg" alt="Headshot corporativo em fundo neutro" loading="lazy" />
-   ```
-
-3. No `Hero.astro` e no `About.astro`, faça o mesmo com `.frame__ph` e `.about__ph`.
+Salve as fotos em `public/images/` com os nomes exatos listados em
+`public/images/README.txt` (`hero.jpg`, `sobre.jpg`, `retrato-01.jpg` … `retrato-06.jpg`).
+Não é preciso editar código: `src/lib/photos.ts` verifica no build se o arquivo existe e o
+componente mostra a foto; enquanto ela não chega, aparece o placeholder.
 
 Fotos ideais: pelo menos 1600 px no lado maior, JPG, e arquivos originais (não capturas de
 tela) — capturas perdem nitidez e ficam moles em telas grandes.

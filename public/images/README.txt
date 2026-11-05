@@ -1,17 +1,25 @@
-Coloque aqui as fotos do estúdio.
+FOTOS DO SITE — nomes exatos dos arquivos
+=========================================
 
-Sugestão de nomes (usados nos comentários de src/components/Gallery.astro):
+Salve os arquivos nesta pasta (public/images/) com estes nomes.
+O site detecta o arquivo no build e troca o placeholder automaticamente.
 
-  headshot-01.jpg
-  retrato-02.jpg
-  branding-03.jpg
-  equipa-04.jpg
-  executivo-05.jpg
-  editorial-06.jpg
-  ensaio-07.jpg
-  bastidores-08.jpg
+  hero.jpg        Você (Andressa), vertical — aparece no topo do site.
+  sobre.jpg       Você, mais informal (trabalhando, com a câmera).
+                  Opcional: sem ele, a seção Sobre mantém o placeholder.
 
-Dicas:
-- Formato JPEG ou WebP, largura de 1200 a 1600 px já é suficiente.
-- Comprima antes de subir (qualidade 80) para o site carregar rápido.
-- Este arquivo pode ser apagado depois.
+  retrato-01.jpg  Cliente com tablet, blazer preto, fundo claro
+  retrato-02.jpg  Cliente de colete xadrez, braços cruzados
+  retrato-03.jpg  Cliente sentada no banco, blazer branco
+  retrato-04.jpg  Cliente em fundo escuro, luz azulada
+  retrato-05.jpg  Cliente de blazer branco com tablet
+  retrato-06.jpg  Cliente sorrindo, cartão de visita em primeiro plano
+
+Formato recomendado
+-------------------
+- JPG (ou WebP), lado maior com pelo menos 1600 px
+- Arquivos originais, não capturas de tela
+- Pode enviar na vertical: o site corta em outros enquadramentos
+  (horizontal e quadrado) com object-fit: cover
+
+Até 400 KB por foto é o ideal para o site carregar rápido.

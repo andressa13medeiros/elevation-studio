@@ -1,13 +1,28 @@
 ---
 import { studio } from '../consts';
+import { hasPhoto, photoSrc } from '../lib/photos';
+
+const aboutPhoto = 'sobre.jpg';
 ---
 
 <section class="section" id="sobre">
   <div class="wrap about">
     <div class="about__media">
-      <div class="about__ph">
-        <span>Estúdio</span>
-      </div>
+      {hasPhoto(aboutPhoto) ? (
+        <img
+          class="about__img"
+          src={photoSrc(aboutPhoto)}
+          alt="Andressa Medeiros no estúdio, durante um ensaio"
+          width="900"
+          height="1200"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <div class="about__ph">
+          <span>Estúdio</span>
+        </div>
+      )}
       <div class="about__badge">
         <strong>Retrato</strong>
         <span>corporativo</span>
@@ -79,6 +94,16 @@ import { studio } from '../consts';
       radial-gradient(100% 80% at 80% 10%, rgba(217, 189, 139, 0.14), transparent 60%),
       repeating-linear-gradient(115deg, rgba(245, 242, 236, 0.045) 0 1px, transparent 1px 14px),
       var(--surface);
+  }
+
+  .about__img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    object-fit: cover;
+    object-position: 50% 25%;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
   }
 
   .about__ph span {
@@ -165,7 +190,8 @@ import { studio } from '../consts';
       max-width: 380px;
     }
 
-    .about__ph {
+    .about__ph,
+    .about__img {
       aspect-ratio: 4 / 5;
     }
   }

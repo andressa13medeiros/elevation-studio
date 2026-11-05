@@ -1,21 +1,46 @@
 ---
 import { studio } from '../consts';
+import { hasPhoto, photoSrc } from '../lib/photos';
 
 /**
- * Placeholders até as fotos reais chegarem.
- * Para trocar: substitua a <div class="shot__media"> por
- *   <img src="/images/headshot-01.jpg" alt="Headshot corporativo em fundo neutro" loading="lazy" />
+ * Trabalhos reais do estúdio.
+ * Enquanto o arquivo não estiver em public/images/, aparece o placeholder.
+ * Basta salvar a foto com o nome indicado para ela entrar no ar.
  */
 const photos = [
-  { n: '01', label: 'Headshot', size: 'tall' },
-  { n: '02', label: 'Retrato executivo', size: 'wide' },
-  { n: '03', label: 'Branding pessoal', size: 'tall' },
-  { n: '04', label: 'Equipa', size: 'square' },
-  { n: '05', label: 'Editorial', size: 'tall' },
-  { n: '06', label: 'Bastidores', size: 'square' },
-  { n: '07', label: 'Ensaio', size: 'wide' },
-  { n: '08', label: 'Detalhe', size: 'tall' },
+  {
+    file: 'retrato-01.jpg',
+    label: 'Retrato executivo',
+    alt: 'Executiva de blazer preto sorrindo enquanto usa um tablet, fundo cinza claro',
+  },
+  {
+    file: 'retrato-02.jpg',
+    label: 'Branding pessoal',
+    alt: 'Retrato corporativo de mulher de colete xadrez com os braços cruzados',
+  },
+  {
+    file: 'retrato-03.jpg',
+    label: 'Ensaio em estúdio',
+    alt: 'Mulher de blazer branco sentada em um banco, fundo claro',
+  },
+  {
+    file: 'retrato-04.jpg',
+    label: 'Editorial',
+    alt: 'Retrato editorial em fundo escuro com luz azulada',
+  },
+  {
+    file: 'retrato-05.jpg',
+    label: 'Headshot',
+    alt: 'Executiva de blazer branco segurando um tablet, fundo escuro',
+  },
+  {
+    file: 'retrato-06.jpg',
+    label: 'Direção de pose',
+    alt: 'Retrato corporativo de mulher sorrindo com um cartão de visita em primeiro plano',
+  },
 ];
+
+const missing = photos.filter((photo) => !hasPhoto(photo.file)).length;
 ---
 
 <section class="section" id="galeria">
@@ -38,9 +63,20 @@ const photos = [
 
     <div class="gallery">
       {photos.map((photo) => (
-        <figure class={`shot shot--${photo.size}`}>
+        <figure class="shot">
           <div class="shot__media">
-            <span>{photo.n}</span>
+            {hasPhoto(photo.file) ? (
+              <img
+                src={photoSrc(photo.file)}
+                alt={photo.alt}
+                loading="lazy"
+                decoding="async"
+                width="900"
+                height="1200"
+              />
+            ) : (
+              <span class="shot__ph" aria-hidden="true">◦</span>
+            )}
           </div>
           <figcaption>
             <span>{photo.label}</span>
@@ -50,10 +86,13 @@ const photos = [
       ))}
     </div>
 
-    <p class="gallery__note">
-      As imagens desta grelha são temporárias e serão substituídas pelos ensaios reais do
-      estúdio.
-    </p>
+    {missing > 0 && (
+      <p class="gallery__note">
+        {missing === photos.length
+          ? 'As imagens desta grelha são temporárias e serão substituídas pelos ensaios reais do estúdio.'
+          : `Faltam ${missing} ${missing === 1 ? 'foto' : 'fotos'} de trabalho em public/images/.`}
+      </p>
+    )}
   </div>
 </section>
 
@@ -94,35 +133,26 @@ const photos = [
 
   .gallery {
     display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    grid-auto-rows: 190px;
-    gap: 12px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(10px, 1.6vw, 18px);
     margin-top: clamp(1.75rem, 3.5vw, 2.75rem);
+    align-items: start;
   }
 
   .shot {
     display: flex;
     flex-direction: column;
-    gap: 0.55rem;
-    grid-row: span 2;
+    gap: 0.6rem;
   }
 
-  .shot--wide {
-    grid-column: span 2;
-    grid-row: span 1;
-  }
-
-  .shot--square {
-    grid-column: span 1;
-    grid-row: span 1;
+  /* deslocamento leve nas colunas do meio para um ar editorial */
+  .shot:nth-child(3n + 2) {
+    margin-top: clamp(0, 3vw, 2.6rem);
   }
 
   .shot__media {
     position: relative;
-    flex: 1;
-    display: grid;
-    place-items: center;
-    min-height: 0;
+    aspect-ratio: 3 / 4;
     border: 1px solid var(--line);
     border-radius: 10px;
     overflow: hidden;
@@ -133,16 +163,31 @@ const photos = [
     transition: border-color 0.2s ease, transform 0.25s ease;
   }
 
+  .shot__media img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 25%;
+    transition: transform 0.45s ease;
+  }
+
   .shot:hover .shot__media {
     border-color: var(--gold);
     transform: translateY(-3px);
   }
 
-  .shot__media span {
-    color: rgba(217, 189, 139, 0.75);
-    font-family: var(--font-display);
-    font-size: 1.3rem;
-    letter-spacing: 0.1em;
+  .shot:hover .shot__media img {
+    transform: scale(1.03);
+  }
+
+  .shot__ph {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: rgba(217, 189, 139, 0.65);
+    font-size: 1.4rem;
   }
 
   .shot figcaption {
@@ -161,22 +206,27 @@ const photos = [
     font-size: 0.8rem;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 860px) {
     .gallery {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      grid-auto-rows: 160px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .shot:nth-child(3n + 2) {
+      margin-top: 0;
+    }
+
+    .shot:nth-child(2n) {
+      margin-top: clamp(0, 5vw, 2rem);
     }
   }
 
-  @media (max-width: 640px) {
+  @media (max-width: 520px) {
     .gallery {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      grid-auto-rows: 140px;
-      gap: 8px;
+      gap: 10px;
     }
 
-    .shot--wide {
-      grid-column: span 2;
+    .shot figcaption {
+      font-size: 0.66rem;
     }
   }
 </style>

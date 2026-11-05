@@ -10,7 +10,12 @@ export const studio = {
   instagramUrl: 'https://instagram.com/eu.andressamedeirosfotografia',
   whatsappLabel: '+351 933 433 551',
   whatsappUrl: 'https://wa.me/351933433551?text=Oi!+Vi+o+site+e+quero+saber+mais',
-  address: ['Estúdio Andressa Medeiros', 'Lisboa, Portugal'],
+  address: [
+    'Estúdio Andressa Medeiros',
+    'Rua de Santo António, 14',
+    'Santo António dos Cavaleiros',
+    'Lisboa, Portugal',
+  ],
   addressNote: 'Atendimento com agendamento prévio',
 } as const;
 

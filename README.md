@@ -66,6 +66,9 @@ e, se quiser separar por botão, use a variável `cta_text`.
 
 3. No `Hero.astro` e no `About.astro`, faça o mesmo com `.frame__ph` e `.about__ph`.
 
+Fotos ideais: pelo menos 1600 px no lado maior, JPG, e arquivos originais (não capturas de
+tela) — capturas perdem nitidez e ficam moles em telas grandes.
+
 ## Deploy no Cloudflare Pages
 
 - **Framework preset:** Astro
@@ -79,6 +82,6 @@ Também funciona em qualquer host estático (Netlify, Vercel, GitHub Pages).
 
 - [ ] Fotos reais na galeria, no hero e na seção sobre
 - [ ] Depoimentos reais (os atuais são ilustrativos) — com autorização de uso
-- [ ] Endereço completo do estúdio no rodapé (`src/consts.ts`)
+- [x] Endereço do estúdio no rodapé (`src/consts.ts`)
 - [ ] `PUBLIC_GTM_ID` configurado e acionador criado no GTM
 - [ ] Domínio final em `site` no `astro.config.mjs`

@@ -1,0 +1,179 @@
+---
+import { studio } from '../consts';
+---
+
+<section class="section" id="sobre">
+  <div class="wrap about">
+    <div class="about__media">
+      <div class="about__ph">
+        <span>Estúdio</span>
+      </div>
+      <div class="about__badge">
+        <strong>Retrato</strong>
+        <span>corporativo</span>
+      </div>
+    </div>
+
+    <div class="about__copy">
+      <p class="eyebrow">Sobre</p>
+      <h2 class="section__title">Quem está por trás da câmara</h2>
+
+      <p class="about__text">
+        Sou <strong>Andressa Medeiros</strong>, fotógrafa dedicada ao retrato corporativo.
+        Meu trabalho é traduzir competência em imagem: uma foto que abra a porta de uma
+        reunião antes mesmo de você entrar.
+      </p>
+
+      <p class="about__text">
+        Cada sessão começa com uma conversa sobre o seu objetivo — um cargo novo, uma
+        palestra, um site redesenhado. A partir disso, conduzo luz, enquadramento e pose
+        para que o resultado pareça você no seu melhor dia, e não uma versão engessada.
+      </p>
+
+      <ul class="about__list">
+        <li>
+          <strong>Direção de pose</strong>
+          <span>Não precisa saber posar: eu conduzo cada ajuste.</span>
+        </li>
+        <li>
+          <strong>Luz controlada</strong>
+          <span>Estúdio e luz natural, adaptados ao seu segmento.</span>
+        </li>
+        <li>
+          <strong>Uso imediato</strong>
+          <span>Arquivos nos formatos de LinkedIn, site e impressão.</span>
+        </li>
+      </ul>
+
+      <a
+        class="btn btn--ghost"
+        href={studio.whatsappUrl}
+        target="_blank"
+        rel="noopener"
+        data-whatsapp
+        data-cta="SOBRE — FALAR COM A FOTÓGRAFA">Conversar sobre o meu ensaio</a
+      >
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    display: grid;
+    grid-template-columns: 0.85fr 1.15fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .about__media {
+    position: relative;
+  }
+
+  .about__ph {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 3 / 4;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background:
+      radial-gradient(100% 80% at 80% 10%, rgba(217, 189, 139, 0.14), transparent 60%),
+      repeating-linear-gradient(115deg, rgba(245, 242, 236, 0.045) 0 1px, transparent 1px 14px),
+      var(--surface);
+  }
+
+  .about__ph span {
+    color: var(--gold);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .about__badge {
+    position: absolute;
+    right: -14px;
+    bottom: -18px;
+    display: flex;
+    flex-direction: column;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    background: var(--ink);
+  }
+
+  .about__badge strong {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--gold);
+  }
+
+  .about__badge span {
+    color: var(--muted);
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  .about__text {
+    margin-top: 1.25rem;
+    color: var(--muted);
+  }
+
+  .about__text strong {
+    color: var(--text);
+    font-weight: 600;
+  }
+
+  .about__list {
+    display: grid;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding-top: 1.75rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .about__list li {
+    display: grid;
+    grid-template-columns: 168px 1fr;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .about__list li:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .about__list strong {
+    color: var(--text);
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .about__list span {
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  @media (max-width: 900px) {
+    .about {
+      grid-template-columns: 1fr;
+    }
+
+    .about__media {
+      max-width: 380px;
+    }
+
+    .about__ph {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .about__list li {
+      grid-template-columns: 1fr;
+      gap: 0.2rem;
+    }
+  }
+</style>

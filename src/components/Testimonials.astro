@@ -1,0 +1,132 @@
+---
+/**
+ * Depoimentos de exemplo — substituir pelos textos reais dos clientes
+ * (com autorização de uso) antes de publicar.
+ */
+const testimonials = [
+  {
+    quote:
+      'Precisava de uma foto para o novo cargo e saí do ensaio com quatro opções que serviram para tudo: LinkedIn, site da empresa e a apresentação do congresso.',
+    name: 'Cliente — diretora de operações',
+    detail: 'Headshot corporativo',
+  },
+  {
+    quote:
+      'O que me surpreendeu foi a direção. Não sei posar e nunca fiquei desconfortável — a Andressa conduziu cada detalhe, da luz à postura.',
+    name: 'Cliente — consultora',
+    detail: 'Branding pessoal',
+  },
+  {
+    quote:
+      'Fotografou a equipa inteira num único dia e o padrão visual ficou consistente. O material já está em uso no site e nas propostas.',
+    name: 'Cliente — sócio de escritório',
+    detail: 'Retrato de equipa',
+  },
+];
+---
+
+<section class="section" id="depoimentos">
+  <div class="wrap">
+    <p class="eyebrow">Depoimentos</p>
+    <h2 class="section__title">O que dizem depois da sessão</h2>
+
+    <ul class="quotes">
+      {testimonials.map((item) => (
+        <li class="quote">
+          <span class="quote__mark" aria-hidden="true">“</span>
+          <blockquote class="quote__text">{item.quote}</blockquote>
+          <footer class="quote__foot">
+            <span class="quote__avatar" aria-hidden="true"></span>
+            <span>
+              <strong>{item.name}</strong>
+              <small>{item.detail}</small>
+            </span>
+          </footer>
+        </li>
+      ))}
+    </ul>
+
+    <p class="quotes__note">Depoimentos ilustrativos, a serem substituídos por relatos reais.</p>
+  </div>
+</section>
+
+<style>
+  .quotes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+    margin-top: clamp(2rem, 4vw, 3rem);
+  }
+
+  .quote {
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+    padding: clamp(1.5rem, 2.6vw, 2rem);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    background: linear-gradient(170deg, var(--surface-2), var(--surface));
+  }
+
+  .quote__mark {
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-size: 2.4rem;
+    line-height: 0.6;
+  }
+
+  .quote__text {
+    flex: 1;
+    color: var(--text);
+    font-family: var(--font-display);
+    font-size: 1.02rem;
+    line-height: 1.6;
+  }
+
+  .quote__foot {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .quote__avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--line-strong);
+    background: radial-gradient(circle at 35% 30%, rgba(217, 189, 139, 0.35), transparent 70%),
+      var(--surface);
+    flex: none;
+  }
+
+  .quote__foot span {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+  }
+
+  .quote__foot strong {
+    font-size: 0.86rem;
+    font-weight: 600;
+  }
+
+  .quote__foot small {
+    color: var(--muted);
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+  }
+
+  .quotes__note {
+    margin-top: 1.25rem;
+    color: var(--muted);
+    font-size: 0.78rem;
+  }
+
+  @media (max-width: 900px) {
+    .quotes {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,136 @@
+---
+const faqs = [
+  {
+    q: 'Preciso saber posar para o ensaio?',
+    a: 'Não. A direção de pose faz parte do serviço: eu oriento ombros, mãos, queixo e expressão a cada clique, até o resultado ficar natural.',
+  },
+  {
+    q: 'Quanto tempo dura uma sessão?',
+    a: 'Um headshot leva cerca de 30 a 45 minutos; um ensaio completo de branding pessoal ocupa em média 2 horas, com troca de roupa e cenários.',
+  },
+  {
+    q: 'Quantas fotos recebo e em quanto tempo?',
+    a: 'A seleção tratada é entregue em até 7 dias úteis, em alta resolução para impressão e nos formatos quadrados e recortados para redes sociais.',
+  },
+  {
+    q: 'O ensaio pode ser na minha empresa?',
+    a: 'Sim. Faço sessões no meu estúdio ou no seu escritório, o que costuma ser mais prático para equipas. Nesse caso, avaliamos juntos o espaço e a luz.',
+  },
+  {
+    q: 'O que devo vestir?',
+    a: 'Roupas lisas, em tons neutros e sem logotipos grandes funcionam melhor. Envio um guia de preparação com sugestões depois do agendamento.',
+  },
+  {
+    q: 'Preciso levar maquiagem ou cabeleireiro?',
+    a: 'Não é obrigatório. Se quiser, posso indicar profissionais de confiança para estar presentes antes da sessão.',
+  },
+];
+---
+
+<section class="section" id="faq">
+  <div class="wrap faq">
+    <div class="faq__head">
+      <p class="eyebrow">FAQ</p>
+      <h2 class="section__title">Perguntas frequentes</h2>
+      <p class="section__lead">
+        Ficou alguma dúvida que não está aqui? Me chame no WhatsApp — respondo
+        pessoalmente.
+      </p>
+    </div>
+
+    <div class="faq__list">
+      {faqs.map((item, index) => (
+        <details class="faq__item" open={index === 0}>
+          <summary>
+            <span>{item.q}</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </summary>
+          <p class="faq__answer">{item.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    display: grid;
+    grid-template-columns: 0.8fr 1.2fr;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+  }
+
+  .faq__head {
+    position: sticky;
+    top: calc(var(--header-h) + 2rem);
+  }
+
+  .faq__list {
+    border-top: 1px solid var(--line);
+  }
+
+  .faq__item {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .faq__item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary:hover {
+    color: var(--gold);
+  }
+
+  .faq__icon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    flex: none;
+  }
+
+  .faq__icon::before,
+  .faq__icon::after {
+    content: '';
+    position: absolute;
+    inset: 50% 0 auto 0;
+    height: 1px;
+    background: var(--gold);
+    transition: transform 0.2s ease;
+  }
+
+  .faq__icon::after {
+    transform: rotate(90deg);
+  }
+
+  .faq__item[open] .faq__icon::after {
+    transform: rotate(0deg);
+  }
+
+  .faq__answer {
+    padding: 0 2.5rem 1.4rem 0;
+    color: var(--muted);
+    font-size: 0.94rem;
+  }
+
+  @media (max-width: 900px) {
+    .faq {
+      grid-template-columns: 1fr;
+    }
+
+    .faq__head {
+      position: static;
+    }
+  }
+</style>

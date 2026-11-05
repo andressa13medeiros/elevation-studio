@@ -1,0 +1,108 @@
+---
+import { studio } from '../consts';
+---
+
+<section class="section cta" id="contato">
+  <div class="wrap cta__inner">
+    <p class="eyebrow cta__eyebrow">Vamos combinar</p>
+    <h2 class="cta__title">Agende seu ensaio</h2>
+    <p class="cta__text">
+      Me conte a data que você precisa e onde a imagem será usada. Respondo com
+      disponibilidade e valores no mesmo dia.
+    </p>
+
+    <div class="cta__actions">
+      <a
+        class="btn btn--wa cta__main"
+        href={studio.whatsappUrl}
+        target="_blank"
+        rel="noopener"
+        data-whatsapp
+        data-cta="AGENDE SEU ENSAIO"
+      >
+        Agendar pelo WhatsApp
+      </a>
+      <a class="btn btn--ghost" href={studio.instagramUrl} target="_blank" rel="noopener">
+        Ver Instagram
+      </a>
+    </div>
+
+    <p class="cta__phone">Resposta direta · {studio.whatsappLabel}</p>
+  </div>
+</section>
+
+<style>
+  .cta {
+    position: relative;
+    overflow: hidden;
+    border-top: 1px solid var(--line);
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    inset: auto 50% -55% auto;
+    width: min(760px, 130vw);
+    aspect-ratio: 1;
+    transform: translateX(50%);
+    background: radial-gradient(circle, rgba(217, 189, 139, 0.14), transparent 62%);
+    pointer-events: none;
+  }
+
+  .cta__inner {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .cta__eyebrow::before {
+    display: none;
+  }
+
+  .cta__title {
+    margin-top: 1rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 400;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+  }
+
+  .cta__text {
+    margin-top: 1.1rem;
+    max-width: 48ch;
+    color: var(--muted);
+  }
+
+  .cta__actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .cta__main {
+    padding-inline: 2rem;
+  }
+
+  .cta__phone {
+    margin-top: 1.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+  }
+
+  @media (max-width: 520px) {
+    .cta__actions {
+      width: 100%;
+      flex-direction: column;
+    }
+
+    .cta__actions .btn {
+      width: 100%;
+    }
+  }
+</style>

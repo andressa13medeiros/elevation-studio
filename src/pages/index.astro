@@ -1,0 +1,33 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Services from '../components/Services.astro';
+import Gallery from '../components/Gallery.astro';
+import Testimonials from '../components/Testimonials.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { studio } from '../consts';
+
+const title = `${studio.name} — ${studio.speciality}`;
+const description =
+  'Retrato corporativo com direção de pose e entrega rápida, para LinkedIn, site e marca pessoal. Agende seu ensaio pelo WhatsApp.';
+---
+
+<Layout title={title} description={description}>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+    <About />
+    <Services />
+    <Gallery />
+    <Testimonials />
+    <Faq />
+    <FinalCta />
+  </main>
+  <Footer />
+  <WhatsAppButton />
+</Layout>

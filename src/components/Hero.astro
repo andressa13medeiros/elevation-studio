@@ -1,0 +1,261 @@
+---
+import { studio } from '../consts';
+---
+
+<section class="hero" id="inicio">
+  <div class="hero__glow" aria-hidden="true"></div>
+
+  <div class="wrap hero__inner">
+    <div class="hero__copy">
+      <p class="eyebrow">{studio.speciality} · {studio.city}</p>
+
+      <h1 class="hero__title">
+        {studio.name}
+        <span class="hero__title-sub">fotografia que abre portas</span>
+      </h1>
+
+      <p class="hero__text">
+        Retratos corporativos com direção de pose, luz cuidada e entrega rápida — para
+        LinkedIn, site, imprensa e materiais da sua marca pessoal.
+      </p>
+
+      <div class="hero__actions">
+        <a
+          class="btn btn--wa hero__main-cta"
+          href={studio.whatsappUrl}
+          target="_blank"
+          rel="noopener"
+          data-whatsapp
+          data-cta="FALE CONOSCO"
+        >
+          Quer fotos incríveis? Fale conosco
+        </a>
+        <a class="btn btn--ghost" href="#galeria">Ver galeria</a>
+      </div>
+
+      <ul class="hero__meta">
+        <li>Direção de pose incluída</li>
+        <li>Entrega em até 7 dias</li>
+        <li>Estúdio em {studio.city.split(',')[0]}</li>
+      </ul>
+    </div>
+
+    <div class="hero__media">
+      <div class="frame">
+        <!-- Troque .frame__ph por <img src="/images/retrato-hero.jpg" alt="Retrato corporativo por Andressa Medeiros" /> -->
+        <div class="frame__ph">
+          <span class="frame__ph-label">Retrato em destaque</span>
+        </div>
+        <span class="frame__corner frame__corner--tl" aria-hidden="true"></span>
+        <span class="frame__corner frame__corner--tr" aria-hidden="true"></span>
+        <span class="frame__corner frame__corner--bl" aria-hidden="true"></span>
+        <span class="frame__corner frame__corner--br" aria-hidden="true"></span>
+      </div>
+      <p class="frame__caption">
+        <span>Portrait · 2026</span>
+        <span>{studio.instagramHandle}</span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    padding-block: calc(var(--header-h) + clamp(3rem, 8vw, 6rem)) clamp(3.5rem, 8vw, 6rem);
+    overflow: hidden;
+  }
+
+  .hero__glow {
+    position: absolute;
+    top: -18%;
+    right: -6%;
+    width: min(620px, 75vw);
+    aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(217, 189, 139, 0.16), transparent 62%);
+    pointer-events: none;
+  }
+
+  .hero__inner {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+  }
+
+  .hero__title {
+    margin-top: 1.1rem;
+    font-family: var(--font-display);
+    font-size: clamp(2.9rem, 7.5vw, 5.2rem);
+    font-weight: 400;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+  }
+
+  .hero__title-sub {
+    display: block;
+    margin-top: 0.75rem;
+    color: var(--gold);
+    font-family: var(--font-body);
+    font-size: clamp(0.78rem, 1.6vw, 0.92rem);
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    line-height: 1.4;
+    text-transform: uppercase;
+  }
+
+  .hero__text {
+    margin-top: 1.5rem;
+    max-width: 46ch;
+    color: var(--muted);
+    font-size: 1.03rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 2rem;
+  }
+
+  .hero__main-cta {
+    font-size: 0.95rem;
+  }
+
+  .hero__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.6rem;
+    margin-top: 2.2rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+  }
+
+  .hero__meta li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .hero__meta li::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex: none;
+  }
+
+  .hero__media {
+    justify-self: end;
+    width: 100%;
+    max-width: 430px;
+  }
+
+  .frame {
+    position: relative;
+    padding: 10px;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: linear-gradient(160deg, var(--surface-2), var(--surface));
+  }
+
+  .frame__ph {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 4 / 5;
+    border-radius: 8px;
+    background:
+      radial-gradient(120% 90% at 30% 15%, rgba(217, 189, 139, 0.18), transparent 60%),
+      repeating-linear-gradient(135deg, rgba(245, 242, 236, 0.05) 0 1px, transparent 1px 12px),
+      #101010;
+  }
+
+  .frame__ph-label {
+    color: var(--gold);
+    font-size: 0.68rem;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  .frame__corner {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 1px solid var(--gold);
+  }
+
+  .frame__corner--tl {
+    top: 4px;
+    left: 4px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+
+  .frame__corner--tr {
+    top: 4px;
+    right: 4px;
+    border-left: 0;
+    border-bottom: 0;
+  }
+
+  .frame__corner--bl {
+    bottom: 4px;
+    left: 4px;
+    border-right: 0;
+    border-top: 0;
+  }
+
+  .frame__corner--br {
+    bottom: 4px;
+    right: 4px;
+    border-left: 0;
+    border-top: 0;
+  }
+
+  .frame__caption {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 0.85rem;
+    color: var(--muted);
+    font-size: 0.68rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 900px) {
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .hero__media {
+      justify-self: start;
+      max-width: 100%;
+    }
+
+    .frame__ph {
+      aspect-ratio: 4 / 3;
+    }
+
+    .hero__main-cta {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .hero__actions .btn {
+      width: 100%;
+    }
+
+    .hero__meta {
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+  }
+</style>

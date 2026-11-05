@@ -1,0 +1,74 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const gtmId = import.meta.env.PUBLIC_GTM_ID;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#070706" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:locale" content="pt_PT" />
+
+    <!-- dataLayer precisa existir antes de qualquer evento ser enviado -->
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+    </script>
+
+    {
+      gtmId && (
+        <script is:inline define:vars={{ gtmId }}>
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || [];
+            w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0];
+            var j = d.createElement(s);
+            var dl = l !== 'dataLayer' ? '&l=' + l : '';
+            j.async = true;
+            j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', gtmId);
+        </script>
+      )
+    }
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo">Ir para o conteúdo</a>
+    <slot />
+
+    <script>
+      // Evento de conversão: todo link marcado com data-whatsapp dispara para o GTM.
+      const WHATSAPP_EVENT = 'click_whatsapp';
+
+      document.querySelectorAll<HTMLAnchorElement>('[data-whatsapp]').forEach((link) => {
+        link.addEventListener('click', () => {
+          const ctaText = link.dataset.cta ?? 'WHATSAPP';
+
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            event: WHATSAPP_EVENT,
+            cta_text: ctaText,
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

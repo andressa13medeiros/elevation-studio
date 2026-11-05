@@ -1,26 +1,32 @@
 ---
 /**
- * Depoimentos de exemplo — substituir pelos textos reais dos clientes
- * (com autorização de uso) antes de publicar.
+ * Avaliações reais publicadas no Google (transcritas dos prints enviados
+ * pelo estúdio em novembro de 2026). Ajustar apenas se a cliente autorizar.
  */
 const testimonials = [
   {
     quote:
-      'Precisava de uma foto para o novo cargo e saí do ensaio com quatro opções que serviram para tudo: LinkedIn, site da empresa e a apresentação do congresso.',
-    name: 'Cliente — diretora de operações',
-    detail: 'Headshot corporativo',
+      'Muito profissional, simpática e dinâmica. Desde o primeiro momento faz-te sentir à vontade e ajuda-te a posar de forma natural, o que se agradece imenso. O resultado superou as minhas expectativas: as fotos ficaram espetaculares. Sem dúvida, uma experiência incrível. Mais do que recomendada!',
+    name: 'Dani Vieira',
+    detail: 'Avaliação no Google',
   },
   {
     quote:
-      'O que me surpreendeu foi a direção. Não sei posar e nunca fiquei desconfortável — a Andressa conduziu cada detalhe, da luz à postura.',
-    name: 'Cliente — consultora',
-    detail: 'Branding pessoal',
+      'Super recomendo! Andressa foi super atenciosa, me ajudou com as poses e postura, indicando referências que me ajudaram a comunicar minha marca pessoal. Com certeza já vou programar a próxima sessão.',
+    name: 'Julie Santos',
+    detail: 'Avaliação no Google',
   },
   {
     quote:
-      'Fotografou a equipa inteira num único dia e o padrão visual ficou consistente. O material já está em uso no site e nas propostas.',
-    name: 'Cliente — sócio de escritório',
-    detail: 'Retrato de equipa',
+      'Tive uma experiência excelente, a Andressa é maravilhosa no que faz! ✨✨✨',
+    name: 'Tatiane Fiel',
+    detail: 'Avaliação no Google',
+  },
+  {
+    quote:
+      'Amei o resultado das fotos, trabalho incrível da Andressa, além do atendimento. Ela é uma querida.',
+    name: 'Sarah Cardoso',
+    detail: 'Avaliação no Google',
   },
 ];
 ---
@@ -34,6 +40,9 @@ const testimonials = [
       {testimonials.map((item) => (
         <li class="quote">
           <span class="quote__mark" aria-hidden="true">“</span>
+          <span class="quote__stars" role="img" aria-label="5 de 5 estrelas">
+            <span aria-hidden="true">★★★★★</span>
+          </span>
           <blockquote class="quote__text">{item.quote}</blockquote>
           <footer class="quote__foot">
             <span class="quote__avatar" aria-hidden="true"></span>
@@ -46,14 +55,16 @@ const testimonials = [
       ))}
     </ul>
 
-    <p class="quotes__note">Depoimentos ilustrativos, a serem substituídos por relatos reais.</p>
+    <p class="quotes__note">
+      Avaliações reais de clientes, publicadas no perfil do estúdio no Google.
+    </p>
   </div>
 </section>
 
 <style>
   .quotes {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 14px;
     margin-top: clamp(2rem, 4vw, 3rem);
   }
@@ -61,7 +72,7 @@ const testimonials = [
   .quote {
     display: flex;
     flex-direction: column;
-    gap: 1.1rem;
+    gap: 0.9rem;
     padding: clamp(1.5rem, 2.6vw, 2rem);
     border: 1px solid var(--line);
     border-radius: var(--radius);
@@ -72,7 +83,13 @@ const testimonials = [
     color: var(--gold);
     font-family: var(--font-display);
     font-size: 2.4rem;
-    line-height: 0.6;
+    line-height: 0.5;
+  }
+
+  .quote__stars {
+    color: var(--gold);
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
   }
 
   .quote__text {

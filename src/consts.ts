@@ -3,7 +3,9 @@
  * Alterar aqui reflete em todas as seções do site.
  */
 export const studio = {
-  name: 'Andressa Medeiros',
+  name: 'Elevation Studio',
+  photographer: 'Andressa Medeiros',
+  brandMark: 'E',
   speciality: 'Retrato Corporativo',
   city: 'Lisboa, Portugal',
   instagramHandle: '@eu.andressamedeirosfotografia',
@@ -11,7 +13,7 @@ export const studio = {
   whatsappLabel: '+351 933 433 551',
   whatsappUrl: 'https://wa.me/351933433551?text=Oi!+Vi+o+site+e+quero+saber+mais',
   address: [
-    'Estúdio Andressa Medeiros',
+    'Elevation Studio',
     'Rua de Santo António, 14',
     'Santo António dos Cavaleiros',
     'Lisboa, Portugal',

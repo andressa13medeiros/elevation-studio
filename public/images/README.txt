@@ -4,9 +4,10 @@ FOTOS DO SITE — nomes exatos dos arquivos
 Salve os arquivos nesta pasta (public/images/) com estes nomes.
 O site detecta o arquivo no build e troca o placeholder automaticamente.
 
-  hero.jpg        Você (Andressa), vertical — aparece no topo do site.
-  sobre.jpg       Você, mais informal (trabalhando, com a câmera).
-                  Opcional: sem ele, a seção Sobre mantém o placeholder.
+  hero.jpg        Andressa com a câmera (foto atual do topo do site).
+  hero-close.jpg  Retrato de rosto (close). Se existir, substitui automaticamente
+                  a hero.jpg no topo.
+  sobre.jpg       Andressa sentada no banco, com o tablet (seção Sobre).
 
   retrato-01.jpg  Cliente com tablet, blazer preto, fundo claro
   retrato-02.jpg  Cliente de colete xadrez, braços cruzados
@@ -17,9 +18,7 @@ O site detecta o arquivo no build e troca o placeholder automaticamente.
 
 Formato recomendado
 -------------------
-- JPG (ou WebP), lado maior com pelo menos 1600 px
+- JPG (ou WebP), lado maior com pelo menos 1600 px, até ~300 KB por foto
 - Arquivos originais, não capturas de tela
 - Pode enviar na vertical: o site corta em outros enquadramentos
-  (horizontal e quadrado) com object-fit: cover
-
-Até 400 KB por foto é o ideal para o site carregar rápido.
+  com object-fit: cover

@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { studio } from '../consts';
 
 interface Props {
   title: string;
@@ -26,6 +27,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:locale" content="pt_PT" />
+    <meta property="og:site_name" content={studio.name} />
 
     <!-- dataLayer precisa existir antes de qualquer evento ser enviado -->
     <script is:inline>

@@ -6,7 +6,7 @@ const allowedHosts = process.env.PREVIEW_HOST ? [process.env.PREVIEW_HOST] : [];
 
 export default defineConfig({
   // Ajuste para o domínio final (Cloudflare Pages) quando publicar.
-  site: 'https://andressamedeiros.pages.dev',
+  site: 'https://elevationstudio.pages.dev',
   output: 'static',
   server: { host: true, port: 4321 },
   vite: { server: { allowedHosts } },

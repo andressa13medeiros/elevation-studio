@@ -2,7 +2,9 @@
 import { studio } from '../consts';
 import { hasPhoto, photoSrc } from '../lib/photos';
 
-const heroPhoto = 'hero.jpg';
+// Foto de destaque do topo: usa o retrato de rosto se ele já estiver em
+// public/images/, senão mostra a foto com a câmera.
+const heroPhoto = hasPhoto('hero-close.jpg') ? 'hero-close.jpg' : 'hero.jpg';
 ---
 
 <section class="hero" id="inicio">
@@ -10,7 +12,7 @@ const heroPhoto = 'hero.jpg';
 
   <div class="wrap hero__inner">
     <div class="hero__copy">
-      <p class="eyebrow">{studio.speciality} · {studio.city}</p>
+      <p class="eyebrow">{studio.speciality} · {studio.photographer}</p>
 
       <h1 class="hero__title">
         {studio.name}
@@ -49,7 +51,7 @@ const heroPhoto = 'hero.jpg';
           <img
             class="frame__img"
             src={photoSrc(heroPhoto)}
-            alt="Andressa Medeiros, fotógrafa de retrato corporativo, com a câmera no estúdio"
+            alt={`${studio.photographer}, fotógrafa do ${studio.name}`}
             width="860"
             height="1075"
             decoding="async"

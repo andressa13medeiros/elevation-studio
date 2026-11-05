@@ -1,4 +1,4 @@
-# Andressa Medeiros — Retrato Corporativo
+# Elevation Studio — Retrato Corporativo
 
 Landing page em **Astro** (100% estática, sem framework JS adicional), tema escuro com
 destaque dourado. Todo o CSS é escopado por componente.
@@ -58,7 +58,7 @@ e, se quiser separar por botão, use a variável `cta_text`.
 ## Trocar as fotos
 
 Salve as fotos em `public/images/` com os nomes exatos listados em
-`public/images/README.txt` (`hero.jpg`, `sobre.jpg`, `retrato-01.jpg` … `retrato-06.jpg`).
+`public/images/README.txt` (`hero.jpg`, `hero-close.jpg`, `sobre.jpg`, `retrato-01.jpg` … `retrato-06.jpg`).
 Não é preciso editar código: `src/lib/photos.ts` verifica no build se o arquivo existe e o
 componente mostra a foto; enquanto ela não chega, aparece o placeholder.
 
@@ -76,8 +76,8 @@ Também funciona em qualquer host estático (Netlify, Vercel, GitHub Pages).
 
 ## Pendências antes de publicar
 
-- [ ] Fotos reais na galeria, no hero e na seção sobre
-- [ ] Depoimentos reais (os atuais são ilustrativos) — com autorização de uso
+- [x] Fotos reais na galeria, no hero e na seção sobre
+- [x] Depoimentos reais (transcritos das avaliações no Google)
 - [x] Endereço do estúdio no rodapé (`src/consts.ts`)
 - [ ] `PUBLIC_GTM_ID` configurado e acionador criado no GTM
 - [ ] Domínio final em `site` no `astro.config.mjs`
